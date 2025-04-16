@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_PREFIX = "ganesh6498"
+        IMAGE_PREFIX = "saicharanargo"
         DEPLOY_YAML = "deployment.yaml"
        
     }
@@ -17,7 +17,7 @@ pipeline {
 
         stage('Docker Login') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub',
+                withCredentials([usernamePassword(credentialsId: 'dockerhub',
                                                   usernameVariable: 'DOCKER_USER',
                                                   passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
@@ -59,11 +59,11 @@ pipeline {
 
         stage('Push to Branch') {
     steps {
-        withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+        withCredentials([string(credentialsId: 'gitdevopstoken', variable: 'GITHUB_TOKEN')]) {
     script {
         sh """
             rm -rf git-temp
-            git clone https://ganesh-redy:${GITHUB_TOKEN}@github.com/ganesh-redy/gitops-test2.git git-temp
+            git clone https://github.com/Saicharan619/git-test-ops-part2.git git-temp
             cd git-temp
             git checkout ${params.DEV_BRANCH} || git checkout -b ${params.DEV_BRANCH}
             cp ../${DEPLOY_YAML} .
@@ -71,7 +71,7 @@ pipeline {
             
             git add .
             git commit -m "Update from pipeline build ${BUILD_NUMBER}" 
-            git push https://ganesh-redy:${GITHUB_TOKEN}@github.com/ganesh-redy/test55-gitops.git ${params.DEV_BRANCH}
+            git push https://ganesh-redy:${gitdevopstoken}@github.com/Saicharan619/git-test-ops-part2.git ${params.DEV_BRANCH}
         """
     }
 }
