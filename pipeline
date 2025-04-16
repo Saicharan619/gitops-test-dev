@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_PREFIX = "saicharanargo"
+        IMAGE_PREFIX = "saicharan12121"
         DEPLOY_YAML = "deployment.yaml"
        
     }
