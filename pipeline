@@ -66,7 +66,7 @@ pipeline {
             git config --global user.email "saicharanreddy1300@gmail.com"
             git config --global user.name "Saicharan619"
 
-            git clone https://github.com/Saicharan619/git-test-ops-part2.git git-temp
+            git clone https://github.com/Saicharan619/gitops-test-dev-part2.git git-temp
 
             cd git-temp
             git checkout ${params.DEV_BRANCH} || git checkout -b ${params.DEV_BRANCH}
