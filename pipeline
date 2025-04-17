@@ -75,7 +75,7 @@ pipeline {
             
             git add .
             git commit -m "Update from pipeline build ${BUILD_NUMBER}" 
-            git push https://Saicharan619:${GITHUB_TOKEN}@github.com/Saicharan619/git-test-ops-part2.git ${params.DEV_BRANCH}
+            git push https://Saicharan619:${GITHUB_TOKEN}@github.com/Saicharan619/gitops-test-dev-part2.git ${params.DEV_BRANCH}
         """
     }
 }
